@@ -69,12 +69,4 @@ print ("Top 3 Months when Max number of events recorded is : \n " +str(EventMont
 print ("Top 3 Months when Min number of events recorded is : \n " +str(EventMonth.nsmallest(3,"count")))
 EventMonth.plot.bar(color=('r','g','b','c'))
 
-# Month where max and min number of events occured
-
-EventDay=pd.crosstab(index=df_master["Day"],columns="count")
-print ("Top 5 Day when Max number of events recorded is : \n " +str(EventDay.nlargest(5,"count")))
-print ("Top 5 Day when Min number of events recorded is : \n " +str(EventDay.nsmallest(5,"count")))
-EventDay.plot.bar(color=('r','g','b','c'))
-
-
 

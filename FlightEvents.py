@@ -47,14 +47,14 @@ df_master.dropna(subset=['Aircraft.Category'],inplace=True)
 df_master.dropna(subset=['Country'],inplace=True)
 
 #remove rows with NaN to get clean file 
-df_master.to_csv("CleanFile1.csv")
+#df_master.to_csv("CleanFile1.csv")
 
 #check frequecy of occurance of events
 #this gves the details of the frequecy of an aircraft catergory involved in an event
 aircategory=pd.crosstab(index=df_master["Aircraft.Category"],columns="count")
 #print (("Details of the frequecy of an aircraft catergory involved in an event = \n"+str(aircategory)))
-print ("the top 3 aircrafts involved in an Event is as follow : \n " +str(aircategory.nlargest(3,"count")))
-print ("The bottom 3 aircrafts involved in an Event is as follow : \n " +str(aircategory.nsmallest(3,"count")))
+print ("Top 3 aircrafts involved in an Event is as follow : \n " +str(aircategory.nlargest(3,"count")))
+print ("Bottom 3 aircrafts involved in an Event is as follow : \n " +str(aircategory.nsmallest(3,"count")))
 aircategory.plot.bar(color=('r','g','b','c'))
 
 #Years where max and min number of events occured

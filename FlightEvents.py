@@ -5,7 +5,7 @@ Spyder Editor
 This is a temporary script file.
 """
 import pandas as pd
-#import dateutil
+import dateutil
 import numpy as np
 import csv
 import matplotlib.pyplot as plt
@@ -27,7 +27,7 @@ df_master=df[['Investigation.Type','Event.Date','Country','Aircraft.Category','M
 # check the total count of the events recorded
 EventCount=df_master['Investigation.Type'].count()
 print("the Total number of events recorded is = "+str(EventCount))
-#pd.options.mode.chained_assignment = None #disabling the warning in the next step
+pd.options.mode.chained_assignment = None #disabling the warning in the next step
 df_master['Event.Date']=pd.to_datetime(df_master['Event.Date'],errors='coerce')
 df_master['Year'] = df_master['Event.Date'].dt.year #splitting the  Year from the date
 df_master['Month']=df_master['Event.Date'].dt.month # splitting the  month from the date
@@ -68,4 +68,13 @@ EventMonth=pd.crosstab(index=df_master["Month"],columns="count")
 print ("Top 3 Months when Max number of events recorded is : \n " +str(EventMonth.nlargest(3,"count")))
 print ("Top 3 Months when Min number of events recorded is : \n " +str(EventMonth.nsmallest(3,"count")))
 EventMonth.plot.bar(color=('r','g','b','c'))
+
+# Month where max and min number of events occured
+
+EventDay=pd.crosstab(index=df_master["Day"],columns="count")
+print ("Top 5 Day when Max number of events recorded is : \n " +str(EventDay.nlargest(5,"count")))
+print ("Top 5 Day when Min number of events recorded is : \n " +str(EventDay.nsmallest(5,"count")))
+EventDay.plot.bar(color=('r','g','b','c'))
+
+
 
